@@ -1,0 +1,11 @@
+// green
+
+$apple-green: #55d040;
+
+// black
+$theme-black: #3b3f4e;
+
+$primary: $apple-green;
+$dark: $theme-black;
+
+@import "~bootstrap/scss/bootstrap.scss";

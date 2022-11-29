@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
-const todoSlice = createSlice({
+export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
@@ -11,8 +11,24 @@ const todoSlice = createSlice({
 
       return state;
     },
+
+    removeTask: (state, action) => {
+      return state.filter((item) => item.id !== action.payload);
+    },
+
+    updateTask: (state, action) => {
+      return state.map((task) => {
+        if (task.id === action.payload.id) {
+          return {
+            ...task,
+            item: action.payload.item,
+          };
+        }
+
+        return task;
+      });
+    },
   },
 });
 
-export const { addTask } = todoSlice.actions;
-export const reducer = todoSlice.reducer;
+export const { addTask, removeTask, updateTask } = todoSlice.actions;
