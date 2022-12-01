@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 import { addTask } from "../redux/todo/slice";
 import { Button, Form } from "react-bootstrap";
 // https://codepen.io/navde/pen/NWdRJwr?editors=1010 // todooooo dele
-// console.log("模式", isEditMode, edittingItemId); // todoooo
+console.clear(); // todooo dele
 
 const mapStateToProps = (state) => {
   return {
@@ -19,11 +19,9 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 const Todo = (props) => {
-  console.log("5566"); //todooo
   const [newTask, setNewTask] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [edittingItemId, setEdittingItemId] = useState("");
-  console.log("模式", isEditMode, edittingItemId); // todoooo
   const handleChange = (e) => {
     setNewTask(e.target.value);
   };
@@ -32,7 +30,7 @@ const Todo = (props) => {
     const item = {
       id: Math.floor(Math.random() * 1000),
       item: newTask,
-      completed: false, // todooo
+      completed: false,
     };
     props.addTask(item);
   };
@@ -75,5 +73,5 @@ const Todo = (props) => {
     </div>
   );
 };
-console.clear(); // todooo dele
+
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);

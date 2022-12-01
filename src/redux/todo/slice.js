@@ -28,7 +28,21 @@ export const todoSlice = createSlice({
         return task;
       });
     },
+
+    completeTask: (state, action) => {
+      return state.map((task) => {
+        if (task.id === action.payload.id) {
+          return {
+            ...task,
+            completed: action.payload.completed,
+          };
+        }
+
+        return task;
+      });
+    },
   },
 });
 
-export const { addTask, removeTask, updateTask } = todoSlice.actions;
+export const { addTask, removeTask, updateTask, completeTask } =
+  todoSlice.actions;
