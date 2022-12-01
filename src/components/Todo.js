@@ -42,8 +42,8 @@ const Todo = (props) => {
   };
 
   return (
-    <div className="add-task">
-      <input type="text" onChange={handleChange} className="task-input" />
+    <div className="d-flex align-items-center">
+      <input type="text" onChange={handleChange} className="add-input mr-2" />
       <Button variant="primary" className="btn-theme" onClick={handleAddTask}>
         新增
       </Button>

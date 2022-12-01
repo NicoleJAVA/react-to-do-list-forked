@@ -1,0 +1,23 @@
+$theme-input-width: 215px;
+$theme-input-height: 40px;
+
+.add-input {
+  width: $theme-input-width;
+  height: $theme-input-height;
+  display: inline-block;
+  border: 2px solid $primary;
+  border-radius: 3px;
+  background: white;
+}
+
+.edit-input {
+  width: $theme-input-width;
+  height: $theme-input-height;
+  display: inline-block;
+}
+
+.edit-input:disabled {
+  background: transparent;
+  outline: 0;
+  border: 0px;
+}

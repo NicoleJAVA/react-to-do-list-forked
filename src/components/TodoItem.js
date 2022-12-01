@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { removeTask, updateTask } from "../redux/todo/slice";
+import Form from "react-bootstrap/Form";
 
 const TodoItem = ({
   item,
@@ -40,7 +41,8 @@ const TodoItem = ({
 
   return (
     <li key={item.id}>
-      <input
+      <Form.Control
+        className="edit-input"
         ref={inputRef}
         disabled={inputRef}
         defaultValue={item.item}
