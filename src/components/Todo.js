@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 import { addTask } from "../redux/todo/slice";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 // https://codepen.io/navde/pen/NWdRJwr?editors=1010 // todooooo dele
 // console.log("模式", isEditMode, edittingItemId); // todoooo
 
@@ -42,23 +42,36 @@ const Todo = (props) => {
   };
 
   return (
-    <div className="d-flex align-items-center">
-      <input type="text" onChange={handleChange} className="add-input mr-2" />
-      <Button variant="primary" className="btn-theme" onClick={handleAddTask}>
-        新增
-      </Button>
-      <ul>
-        {props.tasks.map((item) => (
-          <TodoItem
-            key={item.id}
-            item={item}
-            edittingItemId={edittingItemId}
-            changeEdittingItemId={changeEdittingItemId}
-            isEditMode={isEditMode}
-            setIsEditMode={setIsEditMode}
+    <div className="container-fluid">
+      <div className="theme-card">
+        <h3 className="mb-4">ToDo List</h3>
+        <div className="d-flex align-items-center mb-4">
+          <input
+            type="text"
+            onChange={handleChange}
+            className="add-input mr-2"
           />
-        ))}
-      </ul>
+          <Button
+            variant="primary"
+            className="btn-theme"
+            onClick={handleAddTask}
+          >
+            新增
+          </Button>
+        </div>
+        <ul>
+          {props.tasks.map((item) => (
+            <TodoItem
+              key={item.id}
+              item={item}
+              edittingItemId={edittingItemId}
+              changeEdittingItemId={changeEdittingItemId}
+              isEditMode={isEditMode}
+              setIsEditMode={setIsEditMode}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
