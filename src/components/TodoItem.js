@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeTask, updateTask, completeTask } from "../redux/todo/slice";
 import Form from "react-bootstrap/Form";
 import "../scss/component/todoItem.scss";
+import { Button } from "react-bootstrap";
 
 const TodoItem = ({
   item,
@@ -45,6 +46,14 @@ const TodoItem = ({
     dispatch(completeTask({ id: id, completed: checkbox.checked }));
   };
 
+  const getTaskStyle = (input, completed) => {
+    if (input.disabled) {
+      return completed ? "completed-task" : "todo-task";
+    } else {
+      return "";
+    }
+  };
+
   return (
     <li key={item.id} className="">
       <input
@@ -57,20 +66,37 @@ const TodoItem = ({
       <label htmlFor={`check-${item.id}`}></label>
       <Form.Control
         className={
-          "edit-input " + (item.completed ? "completed-task" : "todo-task")
+          "edit-input task mr-2 " +
+          getTaskStyle(inputRef.current, item.completed)
         }
         ref={inputRef}
         disabled={inputRef}
         defaultValue={item.item}
         type="text"
       />
-      <button onClick={() => handleRemoveTask(item.id)}>Delete</button>
+      <Button
+        className="btn-crud mr-2"
+        variant="outline-secondary"
+        onClick={() => handleRemoveTask(item.id)}
+      >
+        刪除
+      </Button>
       {isEditMode && edittingItemId === item.id ? (
-        <button onClick={() => handleSaveTask(item.id, inputRef.current)}>
-          Save
-        </button>
+        <Button
+          className="btn-crud mr-2"
+          variant="outline-secondary"
+          onClick={() => handleSaveTask(item.id, inputRef.current)}
+        >
+          更新
+        </Button>
       ) : (
-        <button onClick={() => handleEditTask(item.id)}>Edit</button>
+        <Button
+          className="btn-crud mr-2"
+          variant="outline-secondary"
+          onClick={() => handleEditTask(item.id)}
+        >
+          編輯
+        </Button>
       )}
     </li>
   );

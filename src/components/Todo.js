@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 import { addTask } from "../redux/todo/slice";
 import { Button, Form } from "react-bootstrap";
-// https://codepen.io/navde/pen/NWdRJwr?editors=1010 // todooooo dele
-console.clear(); // todooo dele
 
 const mapStateToProps = (state) => {
   return {

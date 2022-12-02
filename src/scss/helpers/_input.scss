@@ -11,9 +11,17 @@ $theme-input-height: 40px;
 }
 
 .edit-input {
+  background: transparent;
   width: $theme-input-width;
   height: $theme-input-height;
   display: inline-block;
+  border-radius: 0px;
+  border: 0;
+  border-bottom: 2px solid rgba($primary, 0.6);
+}
+
+.edit-input:focus {
+  background: transparent;
 }
 
 .edit-input:disabled {
